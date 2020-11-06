@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from novachan.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', MainView.as_view()),
+    path('topic/<int:id>/', TopicView.as_view()),
 ]
