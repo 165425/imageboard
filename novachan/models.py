@@ -11,9 +11,17 @@ class Topic(models.Model):
 
 
 class Post(models.Model):
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    post_id = models.AutoField(primary_key=True)
     text = models.TextField()
     image = models.ImageField(blank=True, null=True)
-    post = models.ForeignKey('Post', on_delete=models.SET_NULL, null=True, related_name='post_id')
     datetime = models.DateTimeField(auto_now=True)
+
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+
+class Thread(Post):
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+
+
+class Reply(Post):
+    thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
