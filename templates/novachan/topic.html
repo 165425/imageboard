@@ -5,6 +5,9 @@
     <title>Novachan: {{ topic.name }}</title>
 </head>
 <body>
-
+    {% for thread in threads %}
+        <h3>{{ thread.user }} No.{{ thread.pk }} {{ thread.datetime }}</h3>
+        <p>{{ thread.text }}</p>
+    {% endfor %}
 </body>
 </html>

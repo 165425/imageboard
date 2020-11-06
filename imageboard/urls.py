@@ -19,6 +19,6 @@ from novachan.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MainView.as_view()),
-    path('topic/<int:id>/', TopicView.as_view()),
+    path('', MainView.as_view(), name='index'),
+    path('<slug:url>', TopicView.as_view(), name='topic')
 ]

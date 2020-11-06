@@ -14,8 +14,8 @@ class MainView(View):
 
 class TopicView(View):
 
-    def get(self, request, id):
+    def get(self, request, url):
 
-        topic = Topic.objects.get(pk=id)
-        posts = Post.objects.filter(topic=topic)
-        return render(request, 'novachan/topic.html', {'posts': posts, 'topic': topic})
+        topic = Topic.objects.get(url=url)
+        threads = Thread.objects.filter(topic_id=topic)
+        return render(request, 'novachan/topic.html', {'threads': threads, 'topic': topic})
