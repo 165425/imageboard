@@ -15,7 +15,7 @@ class Post(models.Model):
     text = models.TextField()
     image = models.ImageField(blank=True, null=True)
     datetime = models.DateTimeField(auto_now=True)
-    name = models.CharField(blank=True, null=True, default='Anoniem', max_length=100)
+    name = models.CharField(max_length=100)
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
