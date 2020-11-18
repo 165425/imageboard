@@ -18,11 +18,13 @@ class Post(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
-    # TODO make function to show long id
-    # def long_id(self, ):
-    #     """returns a string of the pk wit"""
-    #     strpk = str(self.pk)
-    #     return strpk.rjust(5, '0')
+    def long_id(self, length=8):
+        """
+        Returns a string of the pk with zeros added in front
+        This should be displayed in frontend rather than pk
+        """
+        strpk = str(self.pk)
+        return strpk.rjust(length, '0')
 
 
 class Thread(Post):

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>/{{ topic.url }}/{{ thread.id }}</title>
+    <title>/{{ topic.url }}/{{ thread.long_id }}</title>
 </head>
 <body>
     <div>
@@ -13,10 +13,10 @@
         </form>
     </div>
     <div>
-        <h2>{{ thread.name }} No.{{ thread.pk }} {{ thread.datetime }}</h2>
+        <h2>{{ thread.name }} No.{{ thread.long_id }} {{ thread.datetime }}</h2>
         <p>{{ thread.text }}</p>
         {% for reply in replies %}
-            <h3>{{ reply.name }} No.{{ reply.pk }} {{ reply.datetime }}</h3>
+            <h3>{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</h3>
             <p>{{ reply.text }}</p>
         {% endfor %}
     </div>
