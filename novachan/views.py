@@ -39,9 +39,36 @@ class TopicView(View):
             topic = Topic.objects.get(url=url)
 
             Thread.objects.create(name=name, text=text, image=image, topic_id=topic.id)
-            return HttpResponseRedirect(url)  # Prevent from resubmitting same form by redirecting
+            return HttpResponseRedirect(request.path_info)  # Prevent from resubmitting same form by redirecting
 
         else:
-            return HttpResponseRedirect(url)
+            return HttpResponseRedirect(request.path_info)
 
 
+class ThreadView(View):
+
+    def get(self, request, url, id):
+        topic = Topic.objects.get(url=url)
+        thread = Thread.objects.get(id=id)
+        replies = Reply.objects.filter(thread_id=thread.pk)
+        form = SubmitPostForm()
+        return render(request, 'novachan/thread.html', {
+            'topic': topic,
+            'thread': thread,
+            'replies': replies,
+            'form': form
+        })
+
+    def post(self, request, url, id):
+        form = SubmitPostForm(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name'] if form.cleaned_data['name'] else _('Anonymous')
+            text = form.cleaned_data['text']
+            image = form.cleaned_data['image']
+
+            Reply.objects.create(name=name, text=text, image=image, thread_id_id=id)
+            return HttpResponseRedirect(request.path_info)  # Prevent from resubmitting same form by redirecting
+
+        else:
+            return HttpResponseRedirect(request.path_info)

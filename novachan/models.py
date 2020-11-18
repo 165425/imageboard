@@ -16,8 +16,13 @@ class Post(models.Model):
     image = models.ImageField(blank=True, null=True)
     datetime = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=100)
-
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    # TODO make function to show long id
+    # def long_id(self, ):
+    #     """returns a string of the pk wit"""
+    #     strpk = str(self.pk)
+    #     return strpk.rjust(5, '0')
 
 
 class Thread(Post):

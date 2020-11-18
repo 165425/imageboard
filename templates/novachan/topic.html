@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Novachan: {{ topic.name }}</title>
+    <title>/{{ topic.url }}/ - {{ topic.name }}</title>
 </head>
 <body>
     <div>
@@ -14,7 +14,8 @@
     </div>
     <div>
     {% for thread in threads %}
-        <h3>{{ thread.name }} No.{{ thread.pk }} {{ thread.datetime }}</h3>
+        <!-- TODO make url thread.long id -->
+        <h3><a href="{{ thread.pk }}">{{ thread.name }} No.{{ thread.pk }} {{ thread.datetime }}</a></h3>
         <p>{{ thread.text }}</p>
         {% for reply in replies %}
             {% if reply.thread_id_id == thread.pk %}
