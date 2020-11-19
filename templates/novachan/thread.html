@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'novachan/posts.html' %}
+
+{% block head %}
     <title>/{{ topic.url }}/{{ thread.long_id }}</title>
-</head>
-<body>
-    <div>
-        <form method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="post"><br>
-        </form>
-    </div>
-    <div>
-        <h2>{{ thread.name }} No.{{ thread.long_id }} {{ thread.datetime }}</h2>
-        <p>{{ thread.text }}</p>
-        {% for reply in replies %}
-            <h3>{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</h3>
-            <p>{{ reply.text }}</p>
-        {% endfor %}
-    </div>
-</body>
-</html>
+{% endblock %}
+
+{% block content %}
+    <h2>{{ thread.name }} No.{{ thread.long_id }} {{ thread.datetime }}</h2>
+    <p>{{ thread.text }}</p>
+    {% for reply in replies %}
+        <h3>{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</h3>
+        <p>{{ reply.text }}</p>
+    {% endfor %}
+{% endblock %}

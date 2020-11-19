@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%  block head %}
+    {%  endblock %}
+</head>
+<body>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="post"><br>
+        </form>
+    </div>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
