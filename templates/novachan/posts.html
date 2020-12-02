@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {%  block head %}
-    {%  endblock %}
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
-    <div>
-        {% if user.is_authenticated %}
+<div>
+    {% if user.is_authenticated %}
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="post"><br>
         </form>
-        {% endif %}
-    </div>
-    <div>
-        {% block content %}
-        {% endblock %}
-    </div>
+    {% endif %}
+</div>
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 </html>
