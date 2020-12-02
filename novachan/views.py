@@ -1,22 +1,29 @@
-from django.views import View
-from django.shortcuts import render
-from novachan.models import *
-from novachan.forms import *
-from django.utils.translation import ugettext as _
+from django.contrib.auth import forms as auth_forms, login, authenticate
 from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.utils.translation import ugettext as _
+from django.views import View
+
+from novachan.forms import *
+from novachan.models import *
 
 
 # Create your views here.
 class MainView(View):
 
     def get(self, request):
+        template = 'novachan/index.html'
         topics = Topic.objects.all()
-        return render(request, 'novachan/index.html', {'topics': topics})
+        render_args = {
+            'topics': topics,
+        }
+        return render(request, template, render_args)
 
 
 class TopicView(View):
-
-    def get(self, request, url, msg=None):
+    # TODO Maybe ad *args and **kwargs so that url can be turned into an attribute
+    # TODO Maybe find a way to merge TopicView and ThreadView and base them of a single ParentView
+    def get(self, request, url):
         topic = Topic.objects.get(url=url)
         threads = Thread.objects.filter(topic_id=topic)
         replies = Reply.objects.filter(thread_id__in=threads)
@@ -46,7 +53,6 @@ class TopicView(View):
 
 
 class ThreadView(View):
-
     def get(self, request, url, id):
         topic = Topic.objects.get(url=url)
         thread = Thread.objects.get(id=id)
@@ -63,7 +69,7 @@ class ThreadView(View):
         form = SubmitPostForm(request.POST)
 
         if form.is_valid():
-            name = form.cleaned_data['name'] if form.cleaned_data['name'] else _('Anonymous')
+            name = form.cleaned_data['name'] if form.cleaned_data['name'] else 'Anonymous'
             text = form.cleaned_data['text']
             image = form.cleaned_data['image']
 

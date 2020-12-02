@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-14 12:55+0100\n"
+"POT-Creation-Date: 2020-11-30 16:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,10 +26,26 @@ msgstr "Engels"
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: .\novachan\views.py:36
+#: .\novachan\forms.py:9
+msgid "Name"
+msgstr ""
+
+#: .\novachan\forms.py:10
+msgid "Text"
+msgstr ""
+
+#: .\novachan\forms.py:11
+msgid "Image"
+msgstr ""
+
+#: .\novachan\forms.py:15
+msgid "Required"
+msgstr ""
+
+#: .\novachan\views.py:69
 msgid "Anonymous"
 msgstr "Anoniem"
 
-#: .\templates\novachan\index.html:6
+#: .\templates\novachan\index.html:7
 msgid "Novachan: welcome!"
 msgstr "Novachan: welkom!"

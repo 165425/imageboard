@@ -1,3 +1,4 @@
+<!-- TODO make extend base template -->
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +7,13 @@
     <title>{% blocktrans %}Novachan: welcome!{% endblocktrans %}</title>
 </head>
 <body>
+{#    TODO login on homepage #}
+    {% if not user.is_authenticated %}
+        <a href="{% url 'login' %}">Login</a><br>
+{#        <a href="{% url 'register' %}">register</a><br>#}
+    {% else %}
+        <a href="{% url 'logout' %}?next=/">logout</a><br>
+    {% endif %}
     {% for t in topics %}
         <a href="/{{ t.url }}">{{ t.name }}</a> <br>
     {% endfor %}

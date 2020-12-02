@@ -21,7 +21,7 @@ class Post(models.Model):
     def long_id(self, length=8):
         """
         Returns a string of the pk with zeros added in front
-        This should be displayed in frontend rather than pk
+        This should be displayed in front-end rather than pk
         """
         strpk = str(self.pk)
         return strpk.rjust(length, '0')

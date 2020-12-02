@@ -135,3 +135,7 @@ LOCALE_PATHS = (
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = 'home'  # Redirects to home
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # TODO setup email server

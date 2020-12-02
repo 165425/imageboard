@@ -14,12 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from novachan.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MainView.as_view(), name='index'),
+    path('', MainView.as_view(), name='home'),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('<slug:url>/', TopicView.as_view(), name='topic'),
     path('<slug:url>/<slug:id>/', ThreadView.as_view(), name='thread'),
 ]
