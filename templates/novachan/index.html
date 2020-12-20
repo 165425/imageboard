@@ -1,6 +1,7 @@
 {% extends 'novachan/base.html' %}
 
 {% load i18n %}
+{%  load static %}
 
 {% block head %}
     <title>{% blocktrans %}Novachan: welcome!{% endblocktrans %}</title>
@@ -14,7 +15,10 @@
     {% else %}
         <a href="{% url 'logout' %}?next=/">logout</a><br>
     {% endif %}
-    {% for t in topics %}
-        <a href="/{{ t.url }}">{{ t.name }}</a> <br>
-    {% endfor %}
+
+    <div id="topics" class="box">
+        {% for t in topics %}
+            <a href="/{{ t.url }}">{{ t.name }}</a> <br>
+        {% endfor %}
+    </div>
 {% endblock %}

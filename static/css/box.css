@@ -1,0 +1,35 @@
+.box {
+    border: 1px solid black;
+}
+
+.thread-box {
+    padding-left: 1em;
+    width: fit-content;
+    width: -moz-fit-content;
+}
+
+.thread-box-header {
+    text-align: right;
+    text-align: -moz-right;
+    text-align: -webkit-right;
+}
+
+.reply-box {
+    margin: 0.5em 1em 0.5em 2em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #d8ffbf;
+    width: fit-content;
+    width: -moz-fit-content;
+}
+
+.reply-box p {
+    margin-left: 0.5em;
+}
+
+.reply-box-header {
+    margin-top: 0;
+    color: #8229ff;
+    text-align: right;
+    text-align: -moz-right;
+    text-align: -webkit-right;
+}

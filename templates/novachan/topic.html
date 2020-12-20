@@ -6,12 +6,19 @@
 
 {% block content %}
         {% for thread in threads %}
-            <h3><a href="{{ thread.pk }}">{{ thread.name }} No.{{ thread.long_id }} {{ thread.datetime }}</a></h3>
-            <p>{{ thread.text }}</p>
-            {% for reply in replies %}
-                {% if reply.thread_id_id == thread.pk %} <!-- TODO make 6 non-hardcoded -->
-                    <p>{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</p>
-                {% endif %}
-        {% endfor %}
+            <div id="thread{{ thread.long_id }}" class="thread-box">
+                <h3 class="thread-box-header"><a href="{{ thread.pk }}">{{ thread.name }} No.{{ thread.long_id }} {{ thread.datetime }}</a></h3>
+                <p>{{ thread.text }}</p>
+                {% for reply in replies %}
+                    {% if reply.thread_id_id == thread.pk %}
+                        <div id="reply{{ reply.long_id }}" class="reply-box">
+                            <p class="reply-box-header">{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</p>
+                            <hr>
+                            <p>{{ reply.text }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <hr>
     {% endfor %}
 {% endblock %}
