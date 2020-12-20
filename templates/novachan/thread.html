@@ -5,10 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ thread.name }} No.{{ thread.long_id }} {{ thread.datetime }}</h2>
-    <p>{{ thread.text }}</p>
-    {% for reply in replies %}
-        <h3>{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</h3>
-        <p>{{ reply.text }}</p>
-    {% endfor %}
+    <div id="thread{{ thread.long_id }}" class="thread-box">
+        <h2 class="thread-box-header">{{ thread.name }} No.{{ thread.long_id }} {{ thread.datetime }}</h2>
+        <p>{{ thread.text }}</p>
+        {% for reply in replies %}
+            <div id="reply{{ reply.long_id }}" class="reply-box">
+                <h3 class="reply-box-header">{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</h3>
+                <hr>
+                <p>{{ reply.text }}</p>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
