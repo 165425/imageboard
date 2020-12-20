@@ -26,13 +26,17 @@ class TopicView(View):
     def get(self, request, url):
         topic = Topic.objects.get(url=url)
         threads = Thread.objects.filter(topic_id=topic)
-        replies = Reply.objects.filter(thread_id__in=threads)
+        replies_list = list()
+
+        # Limit amount of replies returned per thread
+        for thread in threads:
+            replies_list.extend(Reply.objects.filter(thread_id=thread)[:5])  # TODO make 5 non-hardcoded
 
         form = SubmitPostForm()  # Generate empty form
         return render(request, 'novachan/topic.html', {
             'threads': threads,
             'topic': topic,
-            'replies': replies,
+            'replies': replies_list,
             'form': form
         })
 
