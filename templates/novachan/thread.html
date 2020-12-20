@@ -10,7 +10,7 @@
         <p>{{ thread.text }}</p>
         {% for reply in replies %}
             <div id="reply{{ reply.long_id }}" class="reply-box">
-                <h3 class="reply-box-header">{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</h3>
+                <h4 class="reply-box-header">{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</h4>
                 <hr>
                 <p>{{ reply.text }}</p>
             </div>

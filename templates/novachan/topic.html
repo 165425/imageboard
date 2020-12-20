@@ -12,7 +12,7 @@
                 {% for reply in replies %}
                     {% if reply.thread_id_id == thread.pk %}
                         <div id="reply{{ reply.long_id }}" class="reply-box">
-                            <p class="reply-box-header">{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</p>
+                            <h4 class="reply-box-header">{{ reply.name }} No.{{ reply.long_id }} {{ reply.datetime }}</h4>
                             <hr>
                             <p>{{ reply.text }}</p>
                         </div>
