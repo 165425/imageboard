@@ -16,9 +16,9 @@ class Post(models.Model):
     image = models.ImageField(blank=True, null=True)
     datetime = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  # TODO make not null
 
-    def long_id(self, length=8):
+    def long_id(self, length=8) -> str:
         """
         Returns a string of the pk with zeros added in front
         This should be displayed in front-end rather than pk

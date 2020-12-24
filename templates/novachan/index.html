@@ -17,6 +17,8 @@
     {% endif %}
 
     <div id="topics" class="box">
+        <h4 class="box-header">{% blocktrans %}Topics{% endblocktrans %}</h4>
+        <hr>
         {% for t in topics %}
             <a href="/{{ t.url }}">{{ t.name }}</a> <br>
         {% endfor %}
