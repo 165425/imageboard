@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainView.as_view(), name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register', RegisterView.as_view(), name='register'),
     path('<slug:url>/', TopicView.as_view(), name='topic'),
     path('<slug:url>/<slug:id>/', ThreadView.as_view(), name='thread'),
 ]

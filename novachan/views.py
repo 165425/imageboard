@@ -1,6 +1,6 @@
 from django.contrib.auth import forms as auth_forms, login, authenticate
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.translation import ugettext as _
 from django.views import View
 
@@ -82,3 +82,28 @@ class ThreadView(View):
 
         else:
             return HttpResponseRedirect(request.path_info)
+
+
+class RegisterView(View):
+    form = SignupForm()
+
+    def get(self, request, **kwargs):
+        form = kwargs.get('form', SignupForm())
+        return render(request, 'registration/register.html', {
+            'form': form
+        })
+
+    def post(self, request, **kwargs):
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            print(request.user)
+            return MainView.get(MainView(), request)
+        else:
+            return render(request, 'registration/register.html', {
+                'form': form
+            })
