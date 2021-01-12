@@ -12,6 +12,7 @@
     {% endblock %}
 </head>
 <body style="background-color:#CFFF93">
+{% include 'component/header_component.html' %}
 {% if user.is_authenticated %}
     <div>
         <form method="post">
